@@ -100,7 +100,8 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](comming soon)
+- Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -202,7 +203,6 @@ This project is [MIT](./LICENCE.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
 
 
