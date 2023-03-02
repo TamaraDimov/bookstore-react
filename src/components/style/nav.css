@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
+  margin-bottom: 2rem;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+li {
+  text-decoration: none;
+}
+
+li:hover {
+  font-size: large;
+}
