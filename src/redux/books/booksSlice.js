@@ -1,18 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
+import list from './list';
 
 const initialState = {
-  bookstore: [],
+  books: list,
 };
 
-export const booksSlice = createSlice({
-  name: 'books',
+const booksSlice = createSlice({
+  name: 'book',
   initialState,
-  reducer: {
-    addBook: (state, action) => {
-      state.bookstore.push(action.payload);
+  reducers: {
+    addBook: (store, action) => {
+      const newBook = action.payload;
+      return {
+        ...store,
+        books: [...store.books, newBook],
+      };
     },
-    removeBook: (state, action) => {
-      state.filter((book) => book.id !== action.payload.id);
+    removeBook: (store, action) => {
+      const bookId = action.payload;
+      return {
+        ...store,
+        books: store.books.filter((book) => book.id !== bookId),
+      };
     },
   },
 });
