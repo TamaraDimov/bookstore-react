@@ -1,11 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 import Form from './Form';
 import style from './style/form.css';
+import { getbookInfo } from '../redux/books/booksSlice';
 
 function Books() {
-  const books = useSelector((store) => store.books.books);
+  const dispatch = useDispatch();
+  const { books, pageLoading } = useSelector((store) => store.books);
+
+  useEffect(() => {
+    dispatch(getbookInfo());
+  }, [dispatch]);
+
+  if (pageLoading) {
+    return <h1>Loading...please wait...</h1>;
+  }
+
+  if (books.length === 0) {
+    return (
+      <>
+        <h1>Nothing to Display</h1>
+        <Form />
+      </>
+    );
+  }
 
   return (
     <>
@@ -13,7 +32,7 @@ function Books() {
         {books.map((book) => (
           <Book
             class={style.aman}
-            key={book.id}
+            key={book.item_id}
             title={book.title}
             author={book.author}
             id={book.id}

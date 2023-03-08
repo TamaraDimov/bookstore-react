@@ -1,6 +1,7 @@
+import uniqid from 'uniqid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { booksActions, postBook } from '../redux/books/booksSlice';
 import style from './style/form.css';
 
 function Form() {
@@ -10,9 +11,16 @@ function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!title.trim() || !author.trim()) return;
+    const bookInfo = {
+      item_id: uniqid(),
+      title,
+      author,
+      category: 'Action',
+    };
 
-    const id = Math.random();
-    dispatch(addBook({ id, title, author }));
+    dispatch(booksActions.addBook(bookInfo));
+    dispatch(postBook(bookInfo));
     addTitle('');
     addAuthor('');
   };
