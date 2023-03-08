@@ -1,15 +1,14 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { booksActions, deleteBook } from '../redux/books/booksSlice';
+import { bookSliceActions, deleteBook } from '../redux/books/booksSlice';
 
 function Book({ title, author, id }) {
   const show = useDispatch();
 
-  const removeHandler = (event) => {
-    const { id } = event.target.dataset;
-
-    show(booksActions.removeBook(id));
+  const removeHandler = () => {
+    show(bookSliceActions.removeBook(id));
     show(deleteBook(id));
   };
   return (

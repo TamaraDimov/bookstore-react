@@ -1,7 +1,7 @@
 import uniqid from 'uniqid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { booksActions, postBook } from '../redux/books/booksSlice';
+import { bookSliceActions, postBook } from '../redux/books/booksSlice';
 import style from './style/form.css';
 
 function Form() {
@@ -19,7 +19,7 @@ function Form() {
       category: 'Action',
     };
 
-    dispatch(booksActions.addBook(bookInfo));
+    dispatch(bookSliceActions.addBook(bookInfo));
     dispatch(postBook(bookInfo));
     addTitle('');
     addAuthor('');
