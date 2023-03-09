@@ -57,6 +57,7 @@ const booksSlice = createSlice({
       const newBook = action.payload;
       store.books.push(newBook);
     },
+
     extraReducers: (extrabuilder) => {
       extrabuilder
         .addCase(getbookInfo.rejected, (store, action) => {

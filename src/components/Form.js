@@ -21,27 +21,31 @@ function Form() {
 
     dispatch(bookSliceActions.addBook(bookInfo));
     dispatch(postBook(bookInfo));
+    localStorage.setItem(bookInfo.item_id, JSON.stringify(bookInfo));
     addTitle('');
     addAuthor('');
   };
 
   return (
     <form onSubmit={handleSubmit} className={style.form}>
-      <input
-        type="text"
-        id="title"
-        value={title}
-        placeholder="Add title"
-        onChange={(e) => addTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        id="author"
-        value={author}
-        placeholder="Add Author"
-        onChange={(e) => addAuthor(e.target.value)}
-      />
-      <input className="submit" type="submit" value="Add Book" />
+      <div className="formStile">
+        <input
+          type="text"
+          id="title"
+          className="input1"
+          value={title}
+          placeholder="Add title"
+          onChange={(e) => addTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          id="author"
+          value={author}
+          placeholder="Add Author"
+          onChange={(e) => addAuthor(e.target.value)}
+        />
+        <input className="submit" type="submit" value="Add Book" />
+      </div>
     </form>
   );
 }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 import Form from './Form';
 import style from './style/form.css';
-import { getbookInfo } from '../redux/books/booksSlice';
+import { bookSliceActions, getbookInfo } from '../redux/books/booksSlice';
 
 function Books() {
   const dispatch = useDispatch();
@@ -17,16 +17,7 @@ function Books() {
     return <h1>Loading...please wait...</h1>;
   }
 
-  if (books.length === 0) {
-    return (
-      <>
-        <h1>Nothing to Display</h1>
-        <Form />
-      </>
-    );
-  }
-
-  return (
+  const showBooks = () => (
     <>
       <div>
         {books.map((book) => (
@@ -42,6 +33,26 @@ function Books() {
       <Form />
     </>
   );
+
+  if (books.length === 0) {
+    if (localStorage.length > 0) {
+      const books = [];
+      Object.keys(localStorage).forEach((key) => {
+        books.push(JSON.parse(localStorage.getItem(key)));
+      });
+      books.forEach((b) => dispatch(bookSliceActions.addBook(b)));
+      return showBooks();
+    }
+    return (
+      <>
+        <h1 className="text-5">Nothing to Display</h1>
+        <br />
+        <Form />
+      </>
+    );
+  }
+
+  return showBooks();
 }
 
 export default Books;
