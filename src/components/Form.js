@@ -1,6 +1,8 @@
+import uniqid from 'uniqid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { bookSliceActions, postBook } from '../redux/books/booksSlice';
+import style from './style/form.css';
 
 function Form() {
   const dispatch = useDispatch();
@@ -9,30 +11,41 @@ function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!title.trim() || !author.trim()) return;
+    const bookInfo = {
+      item_id: uniqid(),
+      title,
+      author,
+      category: 'Action',
+    };
 
-    const id = Math.random();
-    dispatch(addBook({ id, title, author }));
+    dispatch(bookSliceActions.addBook(bookInfo));
+    dispatch(postBook(bookInfo));
+    localStorage.setItem(bookInfo.item_id, JSON.stringify(bookInfo));
     addTitle('');
     addAuthor('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id="title"
-        value={title}
-        placeholder="Add title"
-        onChange={(e) => addTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        id="author"
-        value={author}
-        placeholder="Add Author"
-        onChange={(e) => addAuthor(e.target.value)}
-      />
-      <input type="submit" value="Add Book" />
+    <form onSubmit={handleSubmit} className={style.form}>
+      <div className="formStile">
+        <input
+          type="text"
+          id="title"
+          className="input1"
+          value={title}
+          placeholder="Add title"
+          onChange={(e) => addTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          id="author"
+          value={author}
+          placeholder="Add Author"
+          onChange={(e) => addAuthor(e.target.value)}
+        />
+        <input className="submit" type="submit" value="Add Book" />
+      </div>
     </form>
   );
 }

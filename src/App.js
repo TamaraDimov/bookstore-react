@@ -6,13 +6,13 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div className="wrapSection">
       <Nav />
       <Routes>
         <Route exact path="/" element={<Books />} />
         <Route exact path="/categories" element={<Categories />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

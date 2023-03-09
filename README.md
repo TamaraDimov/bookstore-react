@@ -56,8 +56,6 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [BookStore] <a name="BookStore-project"></a>
 
-> This is the first collaborating project of Module2.
-
 **[BookStore]** is a webpage where you can log the book that you have been readding and also find new suggestion.
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -101,7 +99,7 @@ After you're finished please remove all the comments and instructions!
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  Open `[http://localhost:3000](http://localhost:3000)` to view it in your browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,12 +124,21 @@ Example command:
 
 Clone this repository to your desired folder:
 
-https://github.com/TamaraDimov/bookstore-react.git
+`https://github.com/TamaraDimov/bookstore-react.git`
 
 and you are ready to use it. You don't need to install anything or setup anything.
 Good luck!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Install
+
+To install this project in your local machine use
+
+```
+   npm i
+   npm build
+```
 
 <!-- AUTHORS -->
 
@@ -202,7 +209,3 @@ If you like this project, please don't forget to follow me and give me advice so
 This project is [MIT](./LICENCE.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
