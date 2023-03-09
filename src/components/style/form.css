@@ -81,6 +81,18 @@ input {
   row-gap: 20px;
 }
 
+.bookList {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 1rem;
+  padding: 2rem 9.188rem 1.625rem 1.688rem;
+  border-radius: 4px;
+  border: solid 1px var(--white);
+  background-color: #fff;
+  list-style: none;
+}
+
 .formStile input {
   border: 1px solid #bbb;
   border-radius: 4px;
