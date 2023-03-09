@@ -57,19 +57,19 @@ const booksSlice = createSlice({
       const newBook = action.payload;
       store.books.push(newBook);
     },
-    removeBook: (store, action) => {
-      const bookId = action.payload;
-      store.books = store.books.filter((book) => book.item_id !== bookId);
-    },
     extraReducers: (extrabuilder) => {
       extrabuilder
-        .addCase(postBook.pending, (store) => {
-          store.isLoading = true;
-        })
         .addCase(getbookInfo.rejected, (store, action) => {
           store.status = 'error';
           store.error = action.error.message;
+        })
+        .addCase(postBook.pending, (store) => {
+          store.isLoading = true;
         });
+    },
+    removeBook: (store, action) => {
+      const bookId = action.payload;
+      store.books = store.books.filter((book) => book.item_id !== bookId);
     },
   },
 });
